@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=64.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pqc-audit"
+version = "0.1.0"
+description = "Post-Quantum Cryptography readiness audit for Solidity smart contracts"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Crypto Workspace"},
+]
+keywords = ["pqc", "post-quantum", "solidity", "audit", "security", "nist", "dilithium", "slh-dsa"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = []
+
+[project.optional-dependencies]
+pqc = [
+    "dilithium_py",
+    "pyspx",
+]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.scripts]
+pqc-audit = "pqc_audit.cli:main"
+
+[project.urls]
+Homepage = "https://solidity-analyzer.onrender.com/"
+
+[tool.setuptools.packages.find]
+include = ["pqc_audit*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
